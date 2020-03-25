@@ -55,6 +55,8 @@ class Tcp_server(object):
 		else:
 			# http的身体
 			respones_body = html_context.read()
+			# 关闭文件指向
+			html_context.close()
 			# 返回的数据长度，让客户端可以判断这个数据是否接受完毕
 			respones_head += "Content-Length:%d\r\n" % len(respones_body)
 			respones_head += "\r\n"
@@ -113,3 +115,4 @@ def main():
 
 if __name__ == '__main__':
 	main()
+	
